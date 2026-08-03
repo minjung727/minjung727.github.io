@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+
+<template id="__bundler_thumbnail" data-bg-color="#181d26">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="600" cy="340" r="140" fill="#f8fafc"/>
+    <text x="600" y="360" font-size="120" font-family="sans-serif" font-weight="600" fill="#181d26" text-anchor="middle">MK</text>
+    <text x="600" y="560" font-size="48" font-family="sans-serif" fill="#f8fafc" text-anchor="middle">Minjung Kim</text>
+  </svg>
+</template>
+<helmet>
+  <style>
+    html, body { margin: 0; height:100%; background: #ffffff; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif; }
+    a { color: #1b61c9; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    ::selection { background: #181d26; color: #ffffff; }
+  </style>
+  <script src="./image-slot.js"></script>
+</helmet>
+<div style="min-height:100vh; background:#ffffff; color:#181d26; display:flex; flex-direction:column;">
+
+  <nav style="position:sticky; top:0; z-index:10; display:flex; align-items:center; gap:4px; padding:0 40px; background:#ffffff; overflow-x:auto;">
+    <span style="font-size:16px; font-weight:600; color:#181d26; margin-right:32px; flex-shrink:0;">Minjung Kim</span>
+    <sc-for list="{{ tabs }}" as="tab" hint-placeholder-count="7">
+      <button onclick="{{ tab.onClick }}" style="{{ tab.style }}">{{ tab.label }}</button>
+    </sc-for>
+    <a href="CV.dc.html" target="_blank" style="margin-left:auto; flex-shrink:0; background:#181d26; color:#ffffff; font-size:13.5px; font-weight:600; padding:9px 16px; border-radius:8px;">View CV</a>
+  </nav>
+
+  <div style="flex:1; display:flex; justify-content:center; padding:56px 40px;">
+    <div style="width:100%; max-width:860px;">
+
+      <sc-if value="{{ isTab.about }}" hint-placeholder-val="{{ true }}">
+        <section>
+          <div style="position:relative; border-radius:14px; overflow:hidden; margin-bottom:32px; padding:32px 28px; display:flex; gap:28px; align-items:center; flex-wrap:wrap;">
+            <image-slot id="about-bg" style="position:absolute; inset:0; z-index:0;" shape="rect" placeholder="Drop your background photo"></image-slot>
+            <div style="position: absolute; inset: 0; z-index: 1; background: linear-gradient(90deg, rgba(24,29,38,0.55), rgba(24,29,38,0.2)); pointer-events: none; width: 867px; height: 249px"></div>
+            <img src="assets/profile-photo.jpeg" alt="Minjung Kim" style="position:relative; z-index:2; width:112px; height:112px; border-radius:50%; object-fit:cover; flex-shrink:0; border:3px solid #ffffff;">
+            <div style="position:relative; z-index:2;">
+              <h2 style="font-size:30px; line-height:1.2; font-weight:400; color:#ffffff; margin:0 0 8px;">About</h2>
+              <div style="font-size:14px; font-weight:500; color:#f0f0f0;">AI Research Engineer · VLM &amp; Autonomous Driving Perception</div>
+            </div>
+          </div>
+
+          <div style="font-size: 18px; line-height: 1.6; font-weight: 400; color: #333840; margin: 0 0 32px; max-width: 760px; width: 836px; height: 348px"><div style="width: 857px; height: 111px">I am an AI/ML Research Engineer working at the intersection of Vision-Language Models (VLMs), 3D perception, and Embodied AI/Robotics. With 4.5 years of industry experience at Hyundai Motor Company, I have led projects spanning large-scale VLM inference pipelines (Qwen3.5 9B/122B, Ray Serve) and advanced 3D LiDAR perception for autonomous systems.</div><div><br></div><div style="width: 860px; height: 111px">Backed by a solid foundation in Mechanical Engineering and Automotive-Computer Convergence (M.S., GPA 4.0/4.0), my research focuses on combining multimodal foundation models with 3D spatial understanding for visual reasoning and robotic action. I am the inventor on 10 patents and author of 2 publications in perception and domain adaptation.&nbsp;&nbsp;</div><div><br></div><div style="width: 857px; height: 63px">My goal is to pioneer next-generation VLM/VLA architectures that enable intelligent agents to seamlessly perceive, reason, and act in complex physical environments.&nbsp;&nbsp;</div></div>
+
+          <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:16px; max-width:700px; margin-bottom:36px;">
+            <sc-for list="{{ stats }}" as="stat" hint-placeholder-count="4">
+              <div style="background:#f8fafc; border:1px solid #eeeeee; border-radius:10px; padding:16px;">
+                <div style="font-size:26px; font-weight:600; color:#181d26;">{{ stat.value }}</div>
+                <div style="font-size:12.5px; color:#41454d; margin-top:4px; line-height:1.3;">{{ stat.label }}</div>
+              </div>
+            </sc-for>
+          </div>
+
+          <div style="display:flex; flex-direction:column; gap:6px; border-top:1px solid #eeeeee; padding-top:24px; font-size:14px;">
+            <a href="mailto:mkim3059@gatech.edu">mkim3059@gatech.edu</a>
+            <a href="tel:+821074887422" style="color:#41454d;">+82 10-7488-2422</a>
+            <span style="color:#8a8f9c;">251 10th Street, NW, Atlanta, Georgia</span>
+          </div>
+        </section>
+      </sc-if>
+
+      <sc-if value="{{ isTab.experience }}" hint-placeholder-val="{{ false }}">
+        <section>
+          <h2 style="font-size:30px; line-height:1.2; font-weight:400; color:#181d26; margin:0 0 24px;">Experience</h2>
+
+          <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-bottom:28px;">
+            <image-slot id="hyundai-photo-1" style="width:100%; height:200px; display:block;" shape="rounded" radius="14" placeholder="Drop a photo"></image-slot>
+            <image-slot id="hyundai-photo-2" style="width:100%; height:200px; display:block;" shape="rounded" radius="14" placeholder="Drop a photo"></image-slot>
+            <image-slot id="hyundai-photo-3" style="width:100%; height:200px; display:block;" shape="rounded" radius="14" placeholder="Drop a photo"></image-slot>
+          </div>
+
+          <div style="margin-bottom:36px; display:flex; flex-direction:column; gap:6px;">
+            <div style="display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap; gap:6px 16px;">
+              <h3 style="font-size:22px; line-height:1.35; letter-spacing:0.12px; font-weight:400; margin:0; color:#181d26; flex:1 1 400px; min-width:0;">Data Engineer, Automotive Driving SW Development Team</h3>
+              <span style="font-size:14px; color:#41454d; font-weight:500; white-space:nowrap;">Jan 2022 – Present</span>
+            </div>
+            <div style="font-size:14px; color:#1b61c9; font-weight:500;">Hyundai Motor Company · Seoul, South Korea</div>
+          </div>
+
+          <sc-for list="{{ experienceBlocks }}" as="block" hint-placeholder-count="3">
+            <div style="margin-bottom:32px; padding-left:24px; border-left:1px solid #dddddd; position:relative;">
+              <div style="position:absolute; left:-6px; top:5px; width:11px; height:11px; border-radius:50%; background:#181d26;"></div>
+              <div style="display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap; gap:4px 16px; margin-bottom:10px;">
+                <h4 style="font-size:16px; font-weight:500; margin:0; color:#181d26; flex:1 1 300px; min-width:0;">{{ block.title }}</h4>
+                <span style="font-size:14px; color:#41454d; font-weight:400; white-space:nowrap;">{{ block.period }}</span>
+              </div>
+              <ul style="margin:0; padding-left:20px; display:flex; flex-direction:column; gap:8px;">
+                <sc-for list="{{ block.bullets }}" as="bullet" hint-placeholder-count="4">
+                  <li style="font-size:15px; line-height:1.5; color:#333840;">{{ bullet }}</li>
+                </sc-for>
+              </ul>
+            </div>
+          </sc-for>
+
+          <sc-for list="{{ pastRoles }}" as="role" hint-placeholder-count="3">
+            <div style="margin:40px 0 0; padding-top:32px; border-top:1px solid #dddddd; display:flex; flex-direction:column; gap:6px;">
+              <sc-if value="{{ role.twoCol }}" hint-placeholder-val="{{ false }}">
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:16px;">
+                  <image-slot id="{{ role.photoIdA }}" style="width:100%; height:200px; display:block;" shape="rounded" radius="14" placeholder="Drop a photo"></image-slot>
+                  <image-slot id="{{ role.photoIdB }}" style="width:100%; height:200px; display:block;" shape="rounded" radius="14" placeholder="Drop a photo"></image-slot>
+                </div>
+              </sc-if>
+              <sc-if value="{{ role.singleCol }}" hint-placeholder-val="{{ true }}">
+                <image-slot id="{{ role.photoId }}" style="width: 355px; height: 225px; display: block; margin-bottom: 16px" shape="rounded" radius="14" placeholder="Drop a photo for this role"></image-slot>
+              </sc-if>
+              <div style="display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap; gap:6px 16px;">
+                <h3 style="font-size:19px; line-height:1.35; font-weight:500; margin:0; color:#181d26; flex:1 1 320px; min-width:0;">{{ role.title }}</h3>
+                <span style="font-size:14px; color:#41454d; font-weight:500; white-space:nowrap;">{{ role.dates }}</span>
+              </div>
+              <div style="font-size:14px; color:#1b61c9; font-weight:500; margin-bottom:6px;">{{ role.company }} · {{ role.location }}</div>
+              <ul style="margin:0; padding-left:20px; display:flex; flex-direction:column; gap:8px;">
+                <sc-for list="{{ role.bullets }}" as="bullet" hint-placeholder-count="3">
+                  <li style="font-size:15px; line-height:1.5; color:#333840;">{{ bullet }}</li>
+                </sc-for>
+              </ul>
+            </div>
+          </sc-for>
+        </section>
+      </sc-if>
+
+      <sc-if value="{{ isTab.education }}" hint-placeholder-val="{{ false }}">
+        <section>
+          <h2 style="font-size:30px; line-height:1.2; font-weight:400; color:#181d26; margin:0 0 24px;">Education</h2>
+          
+          <image-slot id="education-photo" style="width: 859px; height: 287px; display: block; margin-bottom: 28px" shape="rounded" radius="14" placeholder="Drop a campus / graduation photo"></image-slot><div style="display:flex; flex-direction:column;">
+            <sc-for list="{{ education }}" as="edu" hint-placeholder-count="2">
+              <div style="display:flex; justify-content:space-between; flex-wrap:wrap; gap:6px 16px; padding:20px 0; border-bottom:1px solid #eeeeee;">
+                <div>
+                  <h4 style="font-size:16px; font-weight:500; margin:0 0 6px; color:#181d26;">{{ edu.school }}</h4>
+                  <div style="font-size:15px; color:#181d26;">{{ edu.degree }}</div>
+                  <div style="font-size:14px; color:#41454d; margin-top:6px;">{{ edu.meta }}</div>
+                </div>
+                <div style="font-size:14px; color:#41454d; font-weight:500; white-space:nowrap;">{{ edu.date }}</div>
+              </div>
+            </sc-for>
+          </div>
+        </section>
+      </sc-if>
+
+      <sc-if value="{{ isTab.awards }}" hint-placeholder-val="{{ false }}">
+        <section>
+          <h2 style="font-size:30px; line-height:1.2; font-weight:400; color:#181d26; margin:0 0 24px;">Awards &amp; Honors</h2>
+          <div style="display:flex; flex-direction:column; gap:2px; margin-bottom:24px;">
+            <sc-for list="{{ awards }}" as="award" hint-placeholder-count="14">
+              <div style="display:flex; gap:10px; padding:10px 0; border-bottom:1px solid #f0f0f0;">
+                <span style="width:6px; height:6px; border-radius:50%; background:#181d26; margin-top:8px; flex-shrink:0;"></span>
+                <span style="font-size:14.5px; line-height:1.45; color:#333840;">{{ award }}</span>
+              </div>
+            </sc-for>
+          </div>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+            <div style="border:1px dashed #dddddd; border-radius:10px; padding:16px; font-size:14px; color:#8a8f9c;">+ Add award</div>
+            <div style="border:1px dashed #dddddd; border-radius:10px; padding:16px; font-size:14px; color:#8a8f9c;">+ Add award</div>
+          </div>
+        </section>
+      </sc-if>
+
+      <sc-if value="{{ isTab.publications }}" hint-placeholder-val="{{ false }}">
+        <section>
+          <h2 style="font-size:30px; line-height:1.2; font-weight:400; color:#181d26; margin:0 0 8px;">Publications &amp; Patents</h2>
+          <p style="font-size:15px; line-height:1.4; color:#41454d; margin:0 0 28px; max-width:700px;">A research record spanning autonomous perception and vision-language modeling, with contributions recognized both in peer-reviewed venues and as filed intellectual property.</p>
+
+          <div style="font-size:13px; font-weight:600; letter-spacing:0.5px; color:#1b61c9; text-transform:uppercase; margin-bottom:14px;">Publications</div>
+          <div style="display:flex; flex-direction:column; gap:12px; margin-bottom:36px;">
+            <sc-for list="{{ publications }}" as="pub" hint-placeholder-count="2">
+              <div style="background:#f8fafc; border:1px solid #eeeeee; border-radius:10px; padding:20px 24px; display:flex; gap:16px;">
+                <span style="font-size:14px; color:#8a8f9c; font-weight:500; flex-shrink:0;">{{ pub.num }}</span>
+                <div>
+                  <div style="font-size:15px; line-height:1.5; color:#181d26;">{{ pub.citation }}</div>
+                  <div style="font-size:13px; color:#41454d; margin-top:6px;">{{ pub.meta }}</div>
+                </div>
+              </div>
+              <sc-if value="{{ pub.showPhotoAfter }}" hint-placeholder-val="{{ false }}">
+                <image-slot id="pub-mid-photo" style="width: 856px; height: 159px; display: block" shape="rounded" radius="12" placeholder="Drop a photo"></image-slot>
+              </sc-if>
+            </sc-for>
+          </div>
+
+          <div style="font-size:13px; font-weight:600; letter-spacing:0.5px; color:#1b61c9; text-transform:uppercase; margin-bottom:14px;">Patents</div>
+          <div style="display:flex; flex-direction:column; gap:12px;">
+            <sc-for list="{{ patents }}" as="pat" hint-placeholder-count="10">
+              <div style="background:#f8fafc; border:1px solid #eeeeee; border-radius:10px; padding:20px 24px; display:flex; gap:16px;">
+                <span style="font-size:14px; color:#8a8f9c; font-weight:500; flex-shrink:0;">{{ pat.num }}</span>
+                <div>
+                  <div style="font-size:15px; line-height:1.5; color:#181d26;">{{ pat.citation }}</div>
+                  <div style="font-size:13px; color:#41454d; margin-top:6px;">{{ pat.meta }}</div>
+                </div>
+              </div>
+            </sc-for>
+          </div>
+        </section>
+      </sc-if>
+
+      <sc-if value="{{ isTab.skills }}" hint-placeholder-val="{{ false }}">
+        <section>
+          <h2 style="font-size:30px; line-height:1.2; font-weight:400; color:#181d26; margin:0 0 24px;">Certifications, Skills &amp; Leadership</h2>
+
+          <div style="display:flex; flex-direction:column; gap:14px; margin-bottom:32px;">
+            <sc-for list="{{ skillGroups }}" as="group" hint-placeholder-count="5">
+              <div style="display:flex; gap:16px; flex-wrap:wrap; align-items:baseline;">
+                <span style="font-size:14px; font-weight:600; color:#181d26; flex:0 0 220px;">{{ group.label }}</span>
+                <div style="display:flex; flex-wrap:wrap; gap:8px; flex:1;">
+                  <sc-for list="{{ group.tags }}" as="tag" hint-placeholder-count="5">
+                    <span style="background:#f8fafc; border:1px solid #dddddd; border-radius:6px; padding:5px 10px; font-size:13px; color:#333840;">{{ tag }}</span>
+                  </sc-for>
+                </div>
+              </div>
+            </sc-for>
+          </div>
+
+          <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:24px;">
+            <div>
+              <div style="font-size:14px; font-weight:600; color:#181d26; margin-bottom:10px;">Certifications</div>
+              <ul style="margin:0; padding-left:18px; display:flex; flex-direction:column; gap:6px;">
+                <sc-for list="{{ certifications }}" as="cert" hint-placeholder-count="4">
+                  <li style="font-size:13.5px; line-height:1.4; color:#333840;">{{ cert }}</li>
+                </sc-for>
+              </ul>
+            </div>
+            <div>
+              <div style="font-size:14px; font-weight:600; color:#181d26; margin-bottom:10px;">Teaching</div>
+              <ul style="margin:0; padding-left:18px; display:flex; flex-direction:column; gap:6px;">
+                <sc-for list="{{ teaching }}" as="item" hint-placeholder-count="2">
+                  <li style="font-size:13.5px; line-height:1.4; color:#333840;">{{ item }}</li>
+                </sc-for>
+              </ul>
+            </div>
+            <div>
+              <div style="font-size:14px; font-weight:600; color:#181d26; margin-bottom:10px;">Leadership</div>
+              <ul style="margin:0; padding-left:18px; display:flex; flex-direction:column; gap:6px;">
+                <sc-for list="{{ leadership }}" as="item" hint-placeholder-count="2">
+                  <li style="font-size:13.5px; line-height:1.4; color:#333840;">{{ item }}</li>
+                </sc-for>
+              </ul>
+            </div>
+          </div>
+        </section>
+      </sc-if>
+
+      <sc-if value="{{ isTab.contact }}" hint-placeholder-val="{{ false }}">
+        <section>
+          <h2 style="font-size:30px; line-height:1.2; font-weight:400; color:#181d26; margin:0 0 12px;">Let's talk research.</h2>
+          <p style="font-size:16px; line-height:1.5; color:#333840; margin:0 0 28px; max-width:520px;">Open to RA/TA research positions and full-time perception / VLM roles. Reach out directly — I'd love to hear about your lab or team.</p>
+          <div style="display:flex; flex-direction:column; gap:12px; align-items:flex-start;">
+            <a href="mailto:mkim3059@gatech.edu" style="background:#181d26; color:#ffffff; font-size:16px; font-weight:500; padding:16px 24px; border-radius:12px;">mkim3059@gatech.edu</a>
+            <a href="tel:+821074887422" style="font-size:14px; color:#1b61c9;">+82 10-7488-2422</a>
+            <span style="color:#41454d; font-size:14px;">251 10th Street, NW, Atlanta, Georgia</span>
+          </div>
+        </section>
+      </sc-if>
+
+    </div>
+  </div>
+
+  <footer style="padding:40px 48px; text-align:center;">
+    <div style="font-size:13px; color:#8a8f9c;">© 2026 Minjung Kim</div>
+  </footer>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { active: 'about' };
+
+  setTab(id) {
+    this.setState({ active: id });
+  }
+
+  renderVals() {
+    const tabDefs = [
+      { id: 'about', label: 'About' },
+      { id: 'experience', label: 'Experience' },
+      { id: 'education', label: 'Education' },
+      { id: 'awards', label: 'Awards' },
+      { id: 'publications', label: 'Publications & Patents' },
+      { id: 'skills', label: 'Skills & Leadership' },
+      { id: 'contact', label: 'Contact' },
+    ];
+    const active = this.state.active;
+    const isTab = {};
+    tabDefs.forEach((t) => { isTab[t.id] = t.id === active; });
+
+    const tabs = tabDefs.map((t) => ({
+      label: t.label,
+      onClick: () => this.setTab(t.id),
+      style: {
+        color: t.id === active ? '#181d26' : '#7a7f8c',
+        fontWeight: t.id === active ? 600 : 400,
+        border: 'none',
+        borderBottomWidth: '2px',
+        borderBottomStyle: 'solid',
+        borderBottomColor: t.id === active ? '#181d26' : 'transparent',
+        background: 'none',
+        fontSize: '14.5px',
+        padding: '20px 16px',
+        cursor: 'pointer',
+        whiteSpace: 'nowrap',
+      },
+    }));
+
+    return {
+      tabs,
+      isTab,
+      stats: [
+        { value: '4.5+', label: 'Years industry experience' },
+        { value: '2', label: 'Publications' },
+        { value: '10', label: 'Patents' },
+        { value: '4.0', label: 'M.S. GPA' },
+      ],
+      experienceBlocks: [
+        {
+          title: 'VLM Data Curation Research',
+          period: '2026',
+          bullets: [
+            'Built a production-grade Traffic Light Detection pipeline on Ray Serve, optimizing signal recognition by benchmarking VLM, SAM3, and YOLO architectures.',
+            'Scaled data curation and metadata verification workflows by adapting the SOTA T* algorithm to extract key-frames from scene directories, integrating it with an in-house Qwen VLM and YOLO pipeline.',
+            'Designed and scaled large-scale VLM inference servers across 8 nodes of H100 GPUs, implementing Tensor Parallelism and Data Parallelism to serve Qwen3.5 9B and 122B models in production.',
+            'Improved server throughput from 430 to 5,000 scenes/hour by integrating Continuous Batching, Prefix Caching, and Chunked Prefill serving techniques.',
+            'Architected parallelized API handling for automated data curation workflows, enabling efficient processing of large-scale autonomous driving datasets.',
+          ],
+        },
+        {
+          title: '3D Object Detection and Multi-Object Tracking Research',
+          period: '2024 \u2013 2025',
+          bullets: [
+            'Designed a dual-grid backbone combining short-range dense and long-range sparse feature maps to reduce domain gaps between near and far LiDAR points.',
+            'Integrated multi-frame inputs during network training to stabilize yaw estimation and improve robustness against occlusions.',
+            'Developed and automated large-scale 3D object detection auto-labeling pipelines with Dockerization, Jenkins CI/CD, Airflow scheduling, and Triton server deployment.',
+            'Analyzed and resolved dataset and network issues including intensity-timestamp overwriting and low-confidence tail classes; improved performance through regression loss re-weighting, negative heatmap masking, and balanced long-range sampling.',
+            'Redesigned tracking structure from a fixed array to a dynamic list to address ID overflow and support scalable multi-object tracking.',
+            'Applied Gaussian Process Regression for probabilistic path prediction, reconnecting fragmented tracklets and reducing ID-switching during long occlusions beyond Kalman filter capabilities.',
+            'Developed a re-identification module using projected 3D bounding boxes and semantic segmentation, applying IoU-based occlusion analysis and key point/GMM similarity matching to prevent false associations.',
+            'Conducted quantitative evaluation of 3D object detection, computing F1-score, precision, and recall across domains and object categories.',
+            'Conducted quantitative tracking evaluation, computing MOTA, IDF1, and precision/recall metrics using integrated labeling tasks.',
+            'Developed and trained a LiDAR 3D detection network tailored to company-specific data for auto-labeling.',
+          ],
+        },
+        {
+          title: 'Simulation Data Generation, Domain Adaptation, and Deployment',
+          period: '2023 \u2013 2024',
+          bullets: [
+            'Led development of a training simulation database in collaboration with Applied Intuition.',
+            'Generated 10,000+ simulation images tailored to vehicle specifications and camera parameters, converting labels to ground-truth format.',
+            'Coordinated with Applied Intuition on Simian/Spectral scenario design, ensuring alignment between simulation and perception format.',
+            'Validated simulation dataset utility using the in-house 3D vision network and conducted SOTA research on generative models for future data augmentation.',
+            'Researched domain adaptation techniques focusing on active learning-based logging trigger logic and real-to-sim adaptation; leveraged generative AI to synthesize tail-class traffic light datasets for underrepresented classes.',
+            'Supported Level 4 pilot service deployments across RoboRide (Gangnam), RoboShuttle (National Assembly, Incheon Airport, Pangyo, Namyang R&D), and RoboDelivery (CJ Logistics).',
+          ],
+        },
+      ],
+      pastRoles: [
+        {
+          twoCol: true,
+          photoIdA: 'gra-photo-1',
+          photoIdB: 'gra-photo-2',
+          title: 'Graduate Research Assistant, Automotive-Computer Convergence Engineering',
+          company: 'Hanyang University',
+          location: 'Seoul, South Korea',
+          dates: 'Mar 2020 \u2013 Feb 2022',
+          bullets: [
+            'Derived 3D object position and class from Object Detection and Monodepth outputs, integrating results as camera sensor data to enhance cognitive performance.',
+            'Achieved real-time obstacle recognition on a 1/32 scale model car using the DBSCAN algorithm and YOLO.',
+            'Customized a pyramid-structured GAN in PyTorch for Super Resolution on LiDAR depth images; presented findings at the Korea Automotive Engineers Association.',
+            'Developed a shared encoder-branched decoder architecture to enable simultaneous Object Detection, Semantic Segmentation, and Depth Estimation for a graduation thesis.',
+            'Performed map-based object filtering, tracking, and risk assessment for the Korea Automobile Research Institute autonomous driving project, verified through PG testing.',
+            'Designed a network to estimate vehicle slip angle using sensor data for the Hyundai Motor stuck-situation judgment task.',
+            'Implemented a TCP/IP-based V2V interface for autonomous driving integration in the Korea Automotive Research Institute autonomous driving system project.',
+          ],
+        },
+        {
+          singleCol: true,
+          photoId: 'intern-photo',
+          title: 'Intern, Color Filter Group',
+          company: 'LG Display Company',
+          location: 'Paju, South Korea',
+          dates: 'Jul 2018 \u2013 Jul 2018',
+          bullets: [
+            'Executed a Six Sigma-based quality improvement project, optimizing nozzle start time to reduce contour variation by 28% of the Color Filter production process.',
+          ],
+        },
+        {
+          singleCol: true,
+          photoId: 'undergrad-photo',
+          title: 'Undergraduate Research Assistant, Department of Mechanical Engineering',
+          company: 'Hanyang University',
+          location: 'Seoul, South Korea',
+          dates: 'Mar 2015 \u2013 Feb 2020',
+          bullets: [
+            "Designed and developed an electric board with MPU6050 sensors, resolving data overshoot issues through Kalman and complementary filters; earned the Excellence Award at the College of Engineering Academic Conference.",
+            'Designed a rotary hydraulic supply unit for the Machine Tool Design Competition, selecting standard components, specifying tolerances, and implementing the design in AutoCAD with 3D modeling.',
+            'Analyzed the efficiency of 3-link Scotch-Yoke and 4-link cam compression mechanisms using theoretical calculations, CATIA modeling, and MATLAB simulations.',
+            "Designed and manufactured 'Smooth Crutches' using elastic springs and curved surfaces to enhance user comfort, optimizing materials for cost-efficiency and customizing spring stiffness for varying user weights.",
+          ],
+        },
+      ],
+      education: [
+        {
+          school: 'Hanyang University',
+          degree: 'M.S. in Automotive-Computer Convergence Engineering',
+          meta: 'Advisor: Professor Kunsoo Huh \u00b7 Ph.D. GPA: 4.0/4.0',
+          date: 'Feb 2022',
+        },
+        {
+          school: 'Hanyang University (ERICA)',
+          degree: 'B.S. in Mechanical Engineering',
+          meta: 'Cum Laude \u00b7 GPA: 3.48/4.0',
+          date: 'Feb 2020',
+        },
+      ],
+      awards: [
+        'Best Female Researcher Award, The Korean Society of Automotive Engineers (2021)',
+        'Brain Korea 21 (BK21) FOUR Fellowship, National Research Foundation of Korea (2021)',
+        'Brain Korea 21 (BK21) RA/TA Fellowship, National Research Foundation of Korea (2020)',
+        'Academic Excellence Scholarship (Hanyang-in), Hanyang University, 4 times (2020\u20132021)',
+        "Hanyang ERICA Engineering Excellence (HEEE) Dean's Award, Cum Laude, Hanyang University (2020)",
+        'Scholarship for Dormitory Accommodation, Hanyang University (2020)',
+        'Scholarship for Volunteer Activities, Samsung and Green Umbrella ChildFund (2019)',
+        'Mechanical Conference Grand Award, Hanyang University (2018)',
+        'College of Engineering Conference Excellence Award, Hanyang University (2018)',
+        'Creative Korea (CK-II) Tutoring Scholarship, National Research Foundation of Korea, 2 times (2018)',
+        'Scholarship for Internship Program, Hanyang University (2018)',
+        'Mechanical Conference Grand Award, Hanyang University (2017)',
+        'Applied Excellence Scholarship, Hanyang University (2015)',
+        'National College Entrance Exam Merit Scholarship (2015)',
+      ],
+      publications: [
+        {
+          num: 1,
+          showPhotoAfter: true,
+          citation: '"Bridging the Range Gap: Semi-Supervised Learning for Long-Range Detection," Minjung Kim, Juheon Baeg, and Hyunkyu Lim.',
+          meta: '33rd Hyundai Motor Company Conference \u00b7 June 27, 2025',
+        },
+        {
+          num: 2,
+          citation: '"LiDAR Super-resolution based on Multi-scale Generative Adversarial Network," Minjung Kim, Seungwon Choi, and Kunsoo Huh*.',
+          meta: 'KSAE Annual Spring Conference, Jeju, South Korea \u00b7 June 23\u201326, 2021 (Awarded)',
+        },
+      ],
+      patents: [
+        { num: 1, citation: '"Domain-consistent Learning via Confidence-guided Pseudo-labels and Spatial Masking," Minjung Kim.', meta: 'South Korea \u00b7 In process' },
+        { num: 2, citation: '"Distance-Balanced Sampling with Adaptive Tolerance Ray Casting for Lidar Networks," Minjung Kim.', meta: 'South Korea \u00b7 In process' },
+        { num: 3, citation: '"Sensor-Specific Voxelization and Fusion in Multi-LiDAR Perception," Minjung Kim.', meta: 'South Korea \u00b7 KR No. 1020260099136, 2026' },
+        { num: 4, citation: '"Keep your Road Elements Straight," Minjung Kim.', meta: 'South Korea \u00b7 KR No. 1020250156424, 2025' },
+        { num: 5, citation: '"Bring your simulation to real world," Minjung Kim.', meta: 'South Korea \u00b7 KR No. 1020250140279, 2025' },
+        { num: 6, citation: '"Occlusion detection by estimating the hidden space using 3D modeling," Minjung Kim, Yohan Sung.', meta: 'South Korea \u00b7 KR No. 1020250142081, 2025' },
+        { num: 7, citation: '"Yaw stabilization method for offline tracking," Minjung Kim.', meta: 'South Korea \u00b7 KR No. 1020250147907, 2025' },
+        { num: 8, citation: '"Tracklet re-connection method based on probabilistic model," Minjung Kim, Woocheol Choi, and Hyunkyu Lim.', meta: 'South Korea \u00b7 KR No. 1020250112467, 2025' },
+        { num: 9, citation: '"Tracking re-identification method for auto labeling," Woocheol Choi, Minjung Kim, and Hyunkyu Lim.', meta: 'US, South Korea · US No. 19/663,765 · KR No. 1020250072080, 2025' },
+        { num: 10, citation: '"Look back on your tracking," Minjung Kim, Jaewon Key, and Hyunkyu Lim.', meta: 'US, China, South Korea \u00b7 US No. 18/895,120 \u00b7 CN No. 202411470342.X \u00b7 KR No. 1020230180170, 2023' },
+      ],
+      skillGroups: [
+        { label: 'Vision-Language & Generative AI', tags: ['VLM (Qwen3.5 9B/122B)', 'GANs', 'Generative AI for data synthesis', 'SAM', 'Semi-supervised Learning'] },
+        { label: 'MLOps & Serving Infra', tags: ['Ray Serve', 'Tensor Parallelism', 'Data Parallelism', 'Continuous Batching', 'Prefix Caching', 'Triton Inference Server', 'Docker', 'Jenkins CI/CD', 'Apache Airflow'] },
+        { label: 'Perception & Robotics', tags: ['LiDAR 3D Object Detection', 'Multi-Object Tracking', 'Semantic Segmentation', 'Depth Estimation', 'Sensor Fusion', 'YOLO', 'DBSCAN', 'Kalman Filter', 'Gaussian Process Regression'] },
+        { label: 'Machine Learning & Deep Learning', tags: ['PyTorch', 'Domain Adaptation', 'Active Learning', 'Object Detection'] },
+        { label: 'Programming & Tools', tags: ['Python', 'MATLAB', 'AutoCAD', 'CATIA', 'TCP/IP'] },
+      ],
+      certifications: [
+        'Udacity Deep Reinforcement Learning Nanodegree Program (Sep. 2021)',
+        'Udacity Sensor Fusion Nanodegree Program (Dec. 2020)',
+        'Microsoft Office Specialist Expert \u2013 Excel (Aug. 2018)',
+        'Six Sigma Green Belt Certificate (May 2017)',
+      ],
+      teaching: [
+        'Graduate Teaching Assistant, Automotive-SW Convergence Seminar 1, Hanyang University, Seoul, South Korea (Spring 2021): answered student questions in person and online, marked assignments, and proctored exams.',
+        'Tutor, Hanyang University, Ansan, South Korea: Solid Mechanics for sophomores (Spring 2019); Machining Process and Design for juniors (Fall 2018); Applied Fluid Mechanics Design for juniors (Spring 2018).',
+      ],
+      leadership: [
+        'Executive Director, Department of Mechanical Engineering Students Council (30th College of Engineering Student Council), Hanyang University, Ansan, South Korea (Jan. 2017 \u2013 Dec. 2018): organized college events including freshman orientation, workshops, and campus tours.',
+        'Executive Director, Mechanical Engineering Academic Club RED, Hanyang University, Ansan, South Korea (Jan. 2017 \u2013 Dec. 2018): served as a MATLAB study mentor and collaborated with peers in multiple academic competitions.',
+      ],
+    };
+  }
+}
+
+</script>
+</body>
+</html>
