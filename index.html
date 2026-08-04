@@ -156,10 +156,6 @@
               </div>
             </sc-for>
           </div>
-          <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
-            <div style="border:1px dashed #dddddd; border-radius:10px; padding:16px; font-size:14px; color:#8a8f9c;">+ Add award</div>
-            <div style="border:1px dashed #dddddd; border-radius:10px; padding:16px; font-size:14px; color:#8a8f9c;">+ Add award</div>
-          </div>
         </section>
       </sc-if>
 
@@ -245,14 +241,49 @@
         </section>
       </sc-if>
 
+      <sc-if value="{{ isTab.projects }}" hint-placeholder-val="{{ false }}">
+        <section>
+          <h2 style="font-size:30px; line-height:1.2; font-weight:400; color:#181d26; margin:0 0 8px;">Demos & Implementations</h2>
+          <p style="font-size:15px; line-height:1.4; color:#41454d; margin:0 0 32px; max-width:700px;">Hands-on robotics and reinforcement learning work from graduate research.</p>
+
+          <div style="margin-bottom:40px;">
+            <video src="assets/videos/qcar.mp4" controls style="width:100%; max-width:760px; border-radius:14px; display:block; background:#000;"></video>
+            <div style="font-size:14px; color:#41454d; margin-top:10px; max-width:700px;">NVIDIA QCar &mdash; achieved real-time obstacle recognition on a 1/32 scale model car using the DBSCAN algorithm and YOLO.</div>
+          </div>
+
+          <div style="font-size:13px; font-weight:600; letter-spacing:0.5px; color:#1b61c9; text-transform:uppercase; margin-bottom:14px;">Reinforcement Learning Implementations (Unity)</div>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:24px; max-width:760px;">
+            <div>
+              <video src="assets/videos/pingpong.mp4" controls style="width:100%; border-radius:14px; display:block; background:#000;"></video>
+              <div style="font-size:14px; color:#41454d; margin-top:10px;">RL Implementation: C51 (Ping-Pong Environment)</div>
+            </div>
+            <div>
+              <video src="assets/videos/cargame.mp4" controls style="width:100%; border-radius:14px; display:block; background:#000;"></video>
+              <div style="font-size:14px; color:#41454d; margin-top:10px;">RL Implementation: DQN (Obstacle Avoidance)</div>
+            </div>
+          </div>
+        </section>
+      </sc-if>
+
       <sc-if value="{{ isTab.contact }}" hint-placeholder-val="{{ false }}">
         <section>
           <h2 style="font-size:30px; line-height:1.2; font-weight:400; color:#181d26; margin:0 0 12px;">Let's talk research.</h2>
           <p style="font-size:16px; line-height:1.5; color:#333840; margin:0 0 28px; max-width:520px;">Open to RA/TA research positions and full-time perception / VLM roles. Reach out directly — I'd love to hear about your lab or team.</p>
-          <div style="display:flex; flex-direction:column; gap:12px; align-items:flex-start;">
-            <a href="mailto:mkim3059@gatech.edu" style="background:#181d26; color:#ffffff; font-size:16px; font-weight:500; padding:16px 24px; border-radius:12px;">mkim3059@gatech.edu</a>
+          <div style="display:flex; flex-direction:column; gap:8px; margin-bottom:16px;">
+            <a href="mailto:mkim3059@gatech.edu" style="background:#181d26; color:#ffffff; font-size:16px; font-weight:500; padding:16px 24px; border-radius:12px; align-self:flex-start;">mkim3059@gatech.edu</a>
             <a href="tel:+821074887422" style="font-size:14px; color:#1b61c9;">+82 10-7488-2422</a>
             <span style="color:#41454d; font-size:14px;">251 10th Street, NW, Atlanta, Georgia</span>
+          </div>
+
+          <div style="border-top:1px solid #eeeeee; margin:28px 0 24px;"></div>
+
+          <div style="background:#f8fafc; border:1px solid #eeeeee; border-radius:14px; padding:28px; max-width:520px;">
+            <div style="font-size:18px; font-weight:500; color:#181d26; margin-bottom:6px;">☕ Coffee chat with me</div>
+            <p style="font-size:14px; color:#41454d; margin:0 0 18px;">Leave a message below — clicking send opens your email app addressed to me.</p>
+            <div style="font-size:13px; color:#8a8f9c; margin-bottom:14px;">recipient: emrcns727@gmail.com</div>
+            <input ref="{{ setSubjectRef }}" placeholder="Subject" value="Coffee chat with you" style="width:100%; box-sizing:border-box; font-size:14px; padding:11px 14px; border:1px solid #dddddd; border-radius:8px; margin-bottom:10px; font-family:inherit;">
+            <textarea ref="{{ setMessageRef }}" placeholder="Message" rows="4" style="width:100%; box-sizing:border-box; font-size:14px; padding:11px 14px; border:1px solid #dddddd; border-radius:8px; margin-bottom:14px; font-family:inherit; resize:vertical;">Hi Minjung, I'd love to grab a coffee chat and hear more about your work.</textarea>
+            <button onclick="{{ sendCoffeeChat }}" style="background:#181d26; color:#ffffff; font-size:14.5px; font-weight:500; padding:12px 22px; border-radius:10px; border:none; cursor:pointer;">Send →</button>
           </div>
         </section>
       </sc-if>
@@ -275,10 +306,18 @@ class Component extends DCLogic {
     this.setState({ active: id });
   }
 
+  sendCoffeeChat() {
+    const subject = this._subjectEl ? this._subjectEl.value : '';
+    const message = this._messageEl ? this._messageEl.value : '';
+    const params = new URLSearchParams({ subject: subject || 'Coffee chat with you', body: message });
+    window.location.href = `mailto:emrcns727@gmail.com?${params.toString()}`;
+  }
+
   renderVals() {
     const tabDefs = [
       { id: 'about', label: 'About' },
       { id: 'experience', label: 'Experience' },
+      { id: 'projects', label: 'Demos' },
       { id: 'education', label: 'Education' },
       { id: 'awards', label: 'Awards' },
       { id: 'publications', label: 'Publications & Patents' },
@@ -310,6 +349,9 @@ class Component extends DCLogic {
     return {
       tabs,
       isTab,
+      setSubjectRef: (el) => { this._subjectEl = el; },
+      setMessageRef: (el) => { this._messageEl = el; },
+      sendCoffeeChat: () => this.sendCoffeeChat(),
       stats: [
         { value: '4.5+', label: 'Years industry experience' },
         { value: '2', label: 'Publications' },
